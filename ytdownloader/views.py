@@ -89,14 +89,14 @@ def home(request):
                     ysss = yt.streams.get_audio_only()
                     ysss.download(Media)
                     if os.path.exists(f'{Media}/{title}.mp4'):
-                        response = FileResponse(open(f'{Media}/{title}.mp4','rb'))
+                        response = FileResponse(open(f'{Media}/{title}.mp4','rb'),as_attachment=True)
                         return response
                 elif fr == 'video':
                     q = request.POST['qualityRadio']
                     yss = yt.streams.filter(res=q).first()
                     yss.download(Media)
                     if os.path.exists(f'{Media}/{title}.mp4'):
-                        response = FileResponse(open(f'{Media}/{title}.mp4','rb'))
+                        response = FileResponse(open(f'{Media}/{title}.mp4','rb'),as_attachment=True)
                         return response                    
                 else:
                     pass    
